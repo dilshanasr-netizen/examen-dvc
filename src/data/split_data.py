@@ -32,8 +32,6 @@ def main():
     X = data.drop(columns=[target_column])
     y = data[target_column]
 
-# Remove columns that contain text, such as a date or timestamp column.
-# StandardScaler and the regression model need numerical features.
     non_numeric_columns = X.select_dtypes(exclude=["number"]).columns
 
     if len(non_numeric_columns) > 0:
@@ -64,7 +62,6 @@ def main():
         index=False,
     ) 
 
-    # Print useful information so we know the script worked.
     print("Data split completed successfully.")
     print(f"X_train shape: {X_train.shape}")
     print(f"X_test shape: {X_test.shape}")

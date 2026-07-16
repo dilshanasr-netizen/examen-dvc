@@ -36,7 +36,7 @@ def main():
 
     os.makedirs(models_folder, exist_ok=True)
 
-    print("Loading training data...")
+    print("Loading training data")
     X_train = pd.read_csv(x_train_file)
     y_train = pd.read_csv(y_train_file)
 
@@ -48,7 +48,7 @@ def main():
     model = RandomForestRegressor(random_state=42)
 
     parameter_grid = {
-        "n_estimators": [100, 200],
+        "n_estimators": [100, 15-],
         "max_depth": [None, 10, 20],
         "min_samples_split": [2, 5],
     }
@@ -62,20 +62,17 @@ def main():
         n_jobs=-1,
     )
 
-    # Run the Grid Search.
     print("Grid Search")
     grid_search.fit(X_train, y_train)
 
-    # Get the best parameters.
     best_parameters = grid_search.best_params_
 
-    print("Best parameters found:")
+    print("Best parameters found")
     print(best_parameters)
 
-    # Save the best parameters.
     joblib.dump(best_parameters, best_params_file)
 
-    print("Grid Search completed successfully.")
+    print("Grid Search done")
     print(f"Best parameters saved to: {best_params_file}")
 
 
