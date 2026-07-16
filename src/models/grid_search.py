@@ -48,7 +48,7 @@ def main():
     model = RandomForestRegressor(random_state=42)
 
     parameter_grid = {
-        "n_estimators": [100, 15-],
+        "n_estimators": [100, 150],
         "max_depth": [None, 10, 20],
         "min_samples_split": [2, 5],
     }
